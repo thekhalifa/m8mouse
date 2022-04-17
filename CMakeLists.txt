@@ -12,3 +12,7 @@ target_link_libraries(${PROJECT_NAME} PkgConfig::libhidapi)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 install(FILES 90-m8mouse.rules DESTINATION /etc/udev/rules.d)
+
+# uninstall target for the two files
+add_custom_target(uninstall COMMAND rm -v ${CMAKE_INSTALL_PREFIX}/bin/${PROJECT_NAME} /etc/udev/rules.d/90-m8mouse.rules)
+
